@@ -1,15 +1,8 @@
 
-[![build status](https://img.shields.io/travis/souhe/reactScrollbar/master.svg?style=flat-square)](https://travis-ci.org/souhe/reactScrollbar)
-[![npm package](https://img.shields.io/npm/v/react-scrollbar.svg?style=flat-square)](https://www.npmjs.org/package/react-scrollbar)
-[![npm downloads](https://img.shields.io/npm/dm/react-scrollbar.svg?style=flat-square)](https://www.npmjs.org/package/react-scrollbar)
 # react-scrollbar
 
-Simple ScrollArea component built for [React](http://facebook.github.io/react/).
-
-[Demo](http://souhe.github.io/reactScrollbar)
-
 ```bash
-npm install react-scrollbar --save
+npm install react-awesome-scrollbar --save
 ```
 
 React Scrollbar requires **React 16.3 or later**
@@ -28,24 +21,9 @@ Features:
 If you prefer including scrollbar without css styles boundled inline to js file it's possible to import package without them. It's useful when you want to make custom css changes in scrollbars without using `!important` in each line. 
 
 ```js
-    import ScrollArea from 'react-scrollbar/no-css';
+    import ScrollArea from 'react-scrollbar/dist/ScrollAreaWithoutCss';
 ```
 Then **include scrollArea.css** file into your project.
-
-
-### Run the example app
-
-For run gulp requied Node 8 or earlier
-```bash
-git clone https://github.com/souhe/reactScrollbar.git
-cd reactScrollbar
-npm install
-npx gulp build-examples
-npx gulp less-examples
-npx gulp watch
-```
-
-then open [http://localhost:8003](http://localhost:8003).
 
 ### Using in universal app
 `ScrollArea` component has now full universal app support. It's only one requirement: you have to use `react-scrollbar` in no-css version and then include css file into your project manually (see [this](#version-without-boundled-css-styles)). It's because of issue in webpack style-loader which is used to bundle css styles into main js file.
@@ -171,14 +149,14 @@ class App extends React.Component {
 }
 
 class Content extends React.Component {
+    handleSomeAction(){
+        this.context.scrollArea.refresh();
+    }
+
     render(){
         return (
             <div onClick={this.handleSomeAction.bind(this)}> Some long content </div>
         );
-    }
-
-    handleSomeAction(){
-        this.context.scrollArea.refresh();
     }
 }
 
